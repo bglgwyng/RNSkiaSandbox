@@ -5,49 +5,26 @@
  * @format
  */
 
-import {
-  Canvas,
-  Circle,
-  Fill,
-  Group,
-  LinearGradient,
-  Mask,
-  Rect,
-  Shadow,
-  Turbulence,
-  interpolate,
-  vec,
-} from '@shopify/react-native-skia';
-import React, {useEffect, useState} from 'react';
+import {Canvas, Rect, Shadow} from '@shopify/react-native-skia';
+import React, {useState} from 'react';
 import {Button, SafeAreaView} from 'react-native';
 
 function App(): JSX.Element {
-  const [isTesting, setIsTesting] = useState(false);
-
-  const [canvasMounted, setCanvasMounted] = useState(false);
-
-  useEffect(() => {
-    if (isTesting) {
-      const interval = setInterval(() => {
-        setCanvasMounted(foo => !foo);
-      }, 200);
-      return () => clearInterval(interval);
-    }
-  }, [isTesting]);
+  const [isShadowed, setIsShadowed] = useState(false);
 
   return (
     <SafeAreaView style={{flexGrow: 1}}>
       <Button
-        title={!isTesting ? 'Start' : 'Stop'}
+        title={isShadowed ? 'Shadow Off' : 'Shadow On'}
         onPress={() => {
-          setIsTesting(!isTesting);
+          setIsShadowed(!isShadowed);
         }}
       />
-      {canvasMounted && (
-        <Canvas style={{flex: 1}}>
-          <></>
-        </Canvas>
-      )}
+      <Canvas style={{flex: 1}}>
+        <Rect width={100} height={100} color="black">
+          {isShadowed && <Shadow dx={10} dy={10} blur={10} color="black" />}
+        </Rect>
+      </Canvas>
     </SafeAreaView>
   );
 }
