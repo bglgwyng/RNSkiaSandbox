@@ -45,7 +45,7 @@ function App(): JSX.Element {
       />
       {canvasMounted && (
         <Canvas style={{flex: 1}}>
-          <></>
+          <Fill color="red" />
         </Canvas>
       )}
     </SafeAreaView>
