@@ -19,7 +19,7 @@ import {
   vec,
 } from '@shopify/react-native-skia';
 import React, {useEffect, useState} from 'react';
-import {Button, SafeAreaView} from 'react-native';
+import {Button, SafeAreaView, Text} from 'react-native';
 
 function App(): JSX.Element {
   const [isTesting, setIsTesting] = useState(false);
@@ -37,6 +37,8 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView style={{flexGrow: 1}}>
+      <Text>Dev Mode: {__DEV__ ? 'Enabled' : 'Disabled'}</Text>
+      <Text>Hermes: {global.HermesInternal ? 'Enabled' : 'Disabled'}</Text>
       <Button
         title={!isTesting ? 'Start' : 'Stop'}
         onPress={() => {
