@@ -1,23 +1,4 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import {
-  Canvas,
-  Circle,
-  Fill,
-  Group,
-  LinearGradient,
-  Mask,
-  Rect,
-  Shadow,
-  Turbulence,
-  interpolate,
-  vec,
-} from '@shopify/react-native-skia';
+import {Canvas, Fill} from '@shopify/react-native-skia';
 import React, {useEffect, useState} from 'react';
 import {Button, SafeAreaView, Text} from 'react-native';
 
